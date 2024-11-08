@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUESTION?</title>
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb 0%, #fc25cd 100%);
+            color: #fff;
+        }
+
+       
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.4s ease;
+            z-index: 1000;
+        }
+
+        
+        .modal {
+            background: #fff;
+            color: #333;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        
+        h1 {
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+       
+        .button-group button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            width: 100px;
+        }
+
+       
+        .button-yes {
+            background-color: #6cdb88;
+            color: #ffffff;
+        }
+
+      
+        .button-no {
+            background-color: #ff6b6b;
+            color: #ffffff;
+        }
+
+        
+        .button-group button:hover {
+            transform: scale(1.1);
+        }
+
+        
+        .response-image {
+            display: none;
+            margin-top: 20px;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+
+       
+        .fade {
+            animation: fade 0.4s ease-in-out;
+        }
+
+       
+        .response-message {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        @keyframes fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div class="overlay">
+        <div class="modal">
+            <h1>Are you gay?</h1>
+            <div class="button-group">
+                <button class="button-yes" onclick="sayYes()">Yes</button>
+                <button class="button-no" onclick="sayNo()">No</button>
+            </div>
+            <img id="response-image" class="response-image" src="" alt="Response Image">
+            <p id="response-message" class="response-message"></p>
+        </div>
+    </div>
+
+    <script>
+        function sayYes() {
+            
+            const responseImage = document.getElementById("response-image");
+            responseImage.src = "Gay_Pride_Flag.svg.png";  
+            responseImage.style.display = "block";
+            responseImage.classList.add("fade");
+
+            
+            const responseMessage = document.getElementById("response-message");
+            responseMessage.textContent = "You are gay 🌈";
+            
+            
+            document.querySelector(".button-group").style.display = "none";
+        }
+
+        function sayNo() {
+            
+            const responseImage = document.getElementById("response-image");
+            responseImage.src = "hmm.webp";  
+            responseImage.style.display = "block";
+            responseImage.classList.add("fade");
+
+            
+            setTimeout(() => {
+                responseImage.style.display = "none";
+                document.querySelector(".button-group").style.display = "flex";
+                document.getElementById("response-message").textContent = "";
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
